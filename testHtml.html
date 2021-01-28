@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+
+</head>
+
+<body>
+
+<script>
+var pivotIndex = function (nums) {
+  for (let i = 1; i < nums.length; i++) {
+    var leftnums = nums.reduce((leftnums, curnum, curindex) => {
+      if (curindex <= i) leftnums.push(curnum);
+      return leftnums;
+    }, []);
+    var leftsum = eval(leftnums.join("+"));
+    // console.log(leftnums);
+    // console.log(leftsum);
+
+    var rightnums = nums.reduce((rightnums, curnum, curindex) => {
+      if (curindex >= i) rightnums.push(curnum);
+      return rightnums;
+    }, []);
+    var rightsum = rightnums.reduce((rightsum, curnum) => {
+      return rightsum + curnum;
+    });
+    // console.log(rightnums);
+    // console.log(rightsum);
+    if (leftsum == rightsum) {
+      console.log(nums[i-1])
+    }
+  }
+};
+
+pivotIndex([1, 7, 3, 6, 5, 6]);
+</script>
+
+</body>
+
+</html>
