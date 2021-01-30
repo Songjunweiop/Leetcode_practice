@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,34 +12,49 @@
 
 <body>
 
-<script>
-var pivotIndex = function (nums) {
-  for (let i = 1; i < nums.length; i++) {
-    var leftnums = nums.reduce((leftnums, curnum, curindex) => {
-      if (curindex <= i) leftnums.push(curnum);
-      return leftnums;
-    }, []);
-    var leftsum = eval(leftnums.join("+"));
-    // console.log(leftnums);
-    // console.log(leftsum);
-
-    var rightnums = nums.reduce((rightnums, curnum, curindex) => {
-      if (curindex >= i) rightnums.push(curnum);
-      return rightnums;
-    }, []);
-    var rightsum = rightnums.reduce((rightsum, curnum) => {
-      return rightsum + curnum;
-    });
-    // console.log(rightnums);
-    // console.log(rightsum);
-    if (leftsum == rightsum) {
-      console.log(nums[i-1])
+  <script>
+    const getUrlParam = (sUrl, sKey) => {
+      var url = sUrl.split('?')[1].split("&")
+      var values = []
+      var lastKey = ''
+      var firstValue = ''
+      console.log(url)
+      const aaa = url.reduce((resault, curitem) => {
+        const [key, value] = curitem.split("=")
+        
+        console.log(curitem.split("="))
+        if(lastKey === key){
+          if(values.length === 0){
+            values.push(firstValue)
+          }
+          values.push(value)
+          resault[key] = values
+        }else{
+          resault[key] = value
+          firstValue = value
+        }
+        lastKey = key
+        // console.log('-------------------------------')
+        return resault
+      }, {})
+      // console.log(aaa)
+      console.log(aaa[sKey] ? aaa[sKey] : [])
+      return aaa[sKey] ? aaa[sKey] : []
     }
-  }
-};
 
-pivotIndex([1, 7, 3, 6, 5, 6]);
-</script>
+    // const banny = (queryString, queryKey) => {
+    //   queryString = queryString || window.location.search
+    //   const queries = queryString.substring(1).split('&').reduce((result, query) => {
+    //     const [key, value] = query.split('=')
+    //     result[key] = value
+    //     return result
+    //   }, {})
+    //   console.log(queryKey ? queries[queryKey] : queries) 
+    // }
+
+    getUrlParam('http://www.nowcoder.com?key=1&key=2&key=3&test=4#hehe', 'tet')
+    // banny('?key=1&key=2&key=3&test=4#hehe', "key")
+  </script>
 
 </body>
 
