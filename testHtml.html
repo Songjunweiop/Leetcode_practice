@@ -13,47 +13,14 @@
 <body>
 
   <script>
-    const getUrlParam = (sUrl, sKey) => {
-      var url = sUrl.split('?')[1].split("&")
-      var values = []
-      var lastKey = ''
-      var firstValue = ''
-      console.log(url)
-      const aaa = url.reduce((resault, curitem) => {
-        const [key, value] = curitem.split("=")
-        
-        console.log(curitem.split("="))
-        if(lastKey === key){
-          if(values.length === 0){
-            values.push(firstValue)
-          }
-          values.push(value)
-          resault[key] = values
-        }else{
-          resault[key] = value
-          firstValue = value
-        }
-        lastKey = key
-        // console.log('-------------------------------')
-        return resault
-      }, {})
-      // console.log(aaa)
-      console.log(aaa[sKey] ? aaa[sKey] : [])
-      return aaa[sKey] ? aaa[sKey] : []
+    const commonParentNode = (oNode1,oNode2) => {
+      if(oNode2.contains(oNode1) || oNode1.contains(oNode2)) {
+        return oNode2.contains(oNode1) ? oNode2 : oNode1
+      }
+      for (;oNode1;oNode1 = oNode1.parentNode) {
+        if(oNode1.contains(oNode2)) return oNode1
+      }
     }
-
-    // const banny = (queryString, queryKey) => {
-    //   queryString = queryString || window.location.search
-    //   const queries = queryString.substring(1).split('&').reduce((result, query) => {
-    //     const [key, value] = query.split('=')
-    //     result[key] = value
-    //     return result
-    //   }, {})
-    //   console.log(queryKey ? queries[queryKey] : queries) 
-    // }
-
-    getUrlParam('http://www.nowcoder.com?key=1&key=2&key=3&test=4#hehe', 'tet')
-    // banny('?key=1&key=2&key=3&test=4#hehe', "key")
   </script>
 
 </body>
