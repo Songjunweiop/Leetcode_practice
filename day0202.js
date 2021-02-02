@@ -1,24 +1,25 @@
-const biji = (str) =>{
-  var resault = []
-  var myarr = str.split("")
-  for(let i=0; i<myarr.length; i++) {
-    if(myarr[i] === ')'){
-      for(let j = i-1; j>=0; j--){
-        if(myarr[j] ==='('){
-          resault.splice(j,1)
-          break;
-        }else{
-          resault.splice(j, 1)
-        }
-      }
-    }else if(myarr[i] === "<"){
-      resault.pop()
-    }else{
-      resault.push(myarr[i])
-    }
-  }
-  console.log(resault.join(''))
-}
+// 两数相加
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+var addTwoNumbers = function(l1, l2) {
+  console.log(parseInt(l1.reverse().join('')))
+  console.log(parseInt(l2.reverse().join('')))
+  let num1 = parseInt(l1.reverse().join(''))
+  let num2 = parseInt(l2.reverse().join(''))
+  var sum = num1+num2
+  console.log(sum)
+  console.log(sum.toString())
+  console.log(sum.toString().split('').reverse())
+};
 
-biji('Corona(Trump)USA<<<Virus')
-biji('a(12345678909987654321234567890987654321)bkdasgtj<ufighs<jhgyu<<<<<<<<<')
+addTwoNumbers([2,4,3], [5,6,4])

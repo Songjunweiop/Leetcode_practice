@@ -1,24 +1,27 @@
+// 两数之和
 /**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
  */
-/**
- * @param {ListNode} l1
- * @param {ListNode} l2
- * @return {ListNode}
- */
-var addTwoNumbers = function(l1, l2) {
-  console.log(parseInt(l1.reverse().join('')))
-  console.log(parseInt(l2.reverse().join('')))
-  let num1 = parseInt(l1.reverse().join(''))
-  let num2 = parseInt(l2.reverse().join(''))
-  var sum = num1+num2
-  console.log(sum)
-  console.log(sum.toString())
-  console.log(sum.toString().split('').reverse())
+var twoSum = function (nums, target) {
+  let mynums = nums
+  var arr = [];
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = i+1; j < mynums.length; j++) {
+      console.log(i,j)
+      
+      if (nums[i] + mynums[j] === target) {
+        arr.push(i, j);
+        i=999999999
+        j=999999999
+      }
+    }
+
+  }
+  console.log(arr);
 };
 
-addTwoNumbers([2,4,3], [5,6,4])
+twoSum([2, 7, 11, 15], 9);
+// twoSum([3,2,4], 6);
+// twoSum([2,5,5,11],10);
